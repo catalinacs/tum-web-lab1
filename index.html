@@ -11,318 +11,673 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
-        :root {
-            --bg: #f2f7ff;
-            --card: #ffffff;
-            --text: #2d2d2d;
-            --muted: #5f6b7a;
-            --accent: #4a90e2;
-            --accent-light: #e6f0ff;
-            --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-            --radius: 18px;
+        :root{
+            --bg:#f2f7ff;
+            --card:#ffffff;
+            --text:#1f2937;
+            --muted:#5f6b7a;
+            --accent:#4a90e2;
+            --accent2:#2f7de1;
+            --accentLight:#e6f0ff;
+            --line:rgba(74,144,226,.20);
+            --border:rgba(31,41,55,.12);
+            --shadow:0 18px 40px rgba(0,0,0,.08);
+            --shadow2:0 24px 70px rgba(0,0,0,.10);
+            --radius:18px;
+            --radius2:24px;
+            --maxw:1120px;
         }
 
-        * {
-            box-sizing: border-box;
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family:Poppins,sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            display:flex;
+            justify-content:center;
+            padding:40px 16px;
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: "Poppins", system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 32px 16px;
+        main{width:min(var(--maxw),100%)}
+        section{margin-top:28px}
+
+        .card{
+            background:var(--card);
+            border-radius:var(--radius2);
+            box-shadow:var(--shadow2);
+            border:1px solid var(--border);
         }
 
-        .card {
-            width: min(960px, 100%);
-            background: var(--card);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 32px;
-            display: grid;
-            gap: 28px;
+        .pad-lg{padding:34px}
+        .pad-md{padding:28px}
+
+        .header{
+            text-align:center;
         }
 
-        /* HEADER */
-        .header {
-            text-align: center;
+        .name{
+            margin:0;
+            font-size:42px;
+            font-weight:800;
+            letter-spacing:-.6px;
         }
 
-        .name {
-            font-size: clamp(28px, 4vw, 36px);
-            font-weight: 700;
-            margin: 0;
+        .meta{
+            margin-top:12px;
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:12px;
+            color:var(--muted);
+            font-weight:600;
+            font-size:14px;
         }
 
-        .meta {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-            color: var(--muted);
-            font-weight: 500;
+        .meta span{
+            display:inline-flex;
+            align-items:center;
+            padding:7px 12px;
+            border-radius:999px;
+            background:rgba(230,240,255,.75);
+            border:1px solid rgba(74,144,226,.14);
         }
 
-        /* CONTACTS */
-        .contacts {
-            display: grid;
-            gap: 12px;
+        .section-title{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            margin:0 0 14px 0;
         }
 
-        .contact-item {
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: var(--accent-light);
-            font-weight: 500;
+        .section-title::before{
+            content:"";
+            width:6px;
+            height:34px;
+            background:var(--accent);
+            border-radius:4px;
         }
 
-        /* ABOUT SECTION */
-        .about-section {
-            width: min(960px, 100%);
-            margin-top: 32px;
-            display: grid;
-            gap: 24px;
+        .section-title h2{
+            margin:0;
+            font-size:28px;
+            font-weight:800;
+            letter-spacing:-.2px;
         }
 
-        .about-header,
-        .education-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        p{margin:0; line-height:1.75}
+        .muted{color:var(--muted)}
+
+        a{color:var(--accent2); text-decoration:none}
+        a:hover{text-decoration:underline}
+        a:focus{
+            outline:3px solid rgba(74,144,226,.35);
+            outline-offset:3px;
+            border-radius:12px;
         }
 
-        .about-header::before,
-        .education-header::before {
-            content: "";
-            width: 5px;
-            height: 32px;
-            background: var(--accent);
-            border-radius: 3px;
+        .grid{
+            display:grid;
+            gap:18px;
         }
 
-        .about-header h2,
-        .education-header h2 {
-            font-size: 26px;
-            margin: 0;
-            font-weight: 700;
+        .grid-2{
+            grid-template-columns:repeat(2,minmax(0,1fr));
         }
 
-        .about-content,
-        .education-content {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 32px;
-            box-shadow: var(--shadow);
+        @media (max-width: 920px){
+            .grid-2{grid-template-columns:1fr}
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 24px;
+        .about p + p{margin-top:10px}
+
+        .edu-card{
+            background:var(--card);
+            border-radius:var(--radius2);
+            box-shadow:var(--shadow);
+            border:1px solid var(--border);
+            padding:28px;
         }
 
-        .about-intro {
-            background: #f1f6ff;
-            padding: 24px;
-            border-radius: 16px;
-            border: 1px solid rgba(74, 144, 226, 0.25);
+        .edu-top{
+            display:flex;
+            align-items:flex-start;
+            justify-content:space-between;
+            gap:14px;
+            flex-wrap:wrap;
         }
 
-        .about-intro p {
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.7;
+        .edu-title{
+            font-size:22px;
+            font-weight:900;
+            letter-spacing:-.2px;
+            margin:0;
         }
 
-        .about-intro strong {
-            color: var(--accent);
+        .edu-sub{
+            margin-top:6px;
+            color:var(--muted);
+            font-weight:600;
+            font-size:14px;
         }
 
-        .about-paragraphs {
-            display: grid;
-            gap: 18px;
+        .edu-period{
+            color:var(--muted);
+            font-weight:700;
+            font-size:14px;
+            white-space:nowrap;
         }
 
-        .about-paragraphs p {
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.8;
+        .edu-meta{
+            margin-top:18px;
+            display:grid;
+            grid-template-columns:repeat(3,minmax(0,1fr));
+            gap:14px 22px;
         }
 
-        /* EDUCATION */
-        .education-section {
-            width: min(960px, 100%);
-            margin-top: 32px;
-            display: grid;
-            gap: 24px;
+        @media (max-width: 920px){
+            .edu-meta{grid-template-columns:1fr}
         }
 
-        .education-timeline {
-            display: grid;
-            gap: 28px;
+        .kv{
+            display:flex;
+            gap:8px;
+            align-items:baseline;
+            flex-wrap:wrap;
+            font-size:14px;
         }
 
-        .education-item {
-            position: relative;
-            padding-left: 26px;
+        .kv .k{
+            font-weight:900;
+            color:#111827;
         }
 
-        .education-item::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            background: var(--accent);
-            border-radius: 50%;
+        .kv .v{
+            color:var(--muted);
+            font-weight:650;
         }
 
-        .education-degree {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0 0 6px;
+        .kv .v a{
+            font-weight:750;
         }
 
-        .education-school {
-            font-size: 15px;
-            color: var(--muted);
-            margin: 0 0 8px;
+        .memory{
+            margin-top:18px;
+            border-radius:16px;
+            border:1px solid rgba(74,144,226,.22);
+            background:rgba(230,240,255,.55);
+            padding:18px;
+            position:relative;
         }
 
-        .education-meta {
-            font-size: 14px;
-            color: var(--muted);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
+        .memory::before{
+            content:"";
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            width:6px;
+            background:var(--accent);
+            border-radius:0 6px 6px 0;
         }
 
-        a {
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
+        .memory .label{
+            margin-left:10px;
+            font-size:13px;
+            font-weight:900;
+            color:#1f4f8e;
+            letter-spacing:.25px;
+            text-transform:uppercase;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .memory .text{
+            margin-left:10px;
+            margin-top:10px;
+            font-size:14px;
+            color:#1f2937;
+            font-weight:600;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
+        .projects-wrap{display:grid; gap:22px}
 
-            .meta {
-                flex-direction: column;
-                align-items: center;
-            }
+        .project-card{
+            background:var(--card);
+            border-radius:var(--radius2);
+            box-shadow:var(--shadow2);
+            border:1px solid var(--border);
+            padding:34px;
         }
+
+        .project-head{
+            display:flex;
+            align-items:flex-start;
+            justify-content:space-between;
+            gap:14px;
+            flex-wrap:wrap;
+        }
+
+        .project-title{
+            margin:0;
+            font-size:28px;
+            font-weight:950;
+            letter-spacing:-.25px;
+        }
+
+        .project-sub{
+            margin-top:10px;
+            color:var(--muted);
+            font-weight:700;
+            font-size:14px;
+        }
+
+        .project-desc{
+            margin-top:14px;
+            max-width:920px;
+            color:#2f3a4a;
+            font-weight:600;
+        }
+
+        .project-row{
+            margin-top:22px;
+            display:flex;
+            align-items:center;
+            gap:12px;
+            flex-wrap:wrap;
+        }
+
+        .row-label{
+            font-size:12px;
+            letter-spacing:.28px;
+            text-transform:uppercase;
+            color:var(--muted);
+            font-weight:900;
+        }
+
+        .btn{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding:10px 16px;
+            border-radius:12px;
+            background:var(--accentLight);
+            border:1px solid rgba(74,144,226,.18);
+            color:#0d67c2;
+            font-weight:800;
+            font-size:14px;
+            text-decoration:none;
+            transition:transform .16s ease, background .16s ease;
+        }
+
+        .btn:hover{
+            background:#dbe9ff;
+            transform:translateY(-1px);
+            text-decoration:none;
+        }
+
+        .btn:active{transform:translateY(0)}
+
+        .stack{
+            margin-top:12px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+        }
+
+        .pill{
+            padding:8px 14px;
+            border-radius:999px;
+            background:rgba(230,240,255,.85);
+            border:1px solid rgba(74,144,226,.14);
+            color:var(--accent2);
+            font-size:13px;
+            font-weight:800;
+        }
+
+        .subsection{
+            margin-top:26px;
+        }
+
+        .subsection-title{
+            font-size:13px;
+            font-weight:950;
+            letter-spacing:.28px;
+            text-transform:uppercase;
+            color:#1f4f8e;
+            margin-bottom:12px;
+        }
+
+        .skills{
+            margin:0;
+            padding-left:18px;
+        }
+
+        .skills li{
+            margin-bottom:10px;
+            color:#2b3442;
+            font-weight:650;
+            line-height:1.65;
+        }
+
+        .vol-card{
+            background:var(--card);
+            border-radius:var(--radius2);
+            box-shadow:var(--shadow);
+            border:1px solid var(--border);
+            padding:28px;
+        }
+
+        .vol-title{
+            margin:0;
+            font-size:20px;
+            font-weight:950;
+            letter-spacing:-.2px;
+        }
+
+        .vol-meta{
+            margin-top:8px;
+            color:var(--muted);
+            font-weight:750;
+            font-size:14px;
+        }
+
+        .vol-desc{
+            margin-top:14px;
+            color:#2f3a4a;
+            font-weight:650;
+        }
+
+        .space-12{height:12px}
+        .space-18{height:18px}
+        .space-24{height:24px}
+        .space-32{height:32px}
+        .space-44{height:44px}
+
+        footer{
+            margin-top:40px;
+            padding:20px 16px;
+            text-align:center;
+            color:var(--muted);
+            font-size:14px;
+            font-weight:600;
+        }
+
+        footer a{
+            color:var(--accent2);
+            text-decoration:none;
+        }
+
+        footer a:hover{
+            text-decoration:underline;
+        }
+
+        .footer-line{
+            margin-top:8px;
+            font-size:13px;
+        }
+
     </style>
 </head>
 
 <body>
+<main>
 
-<main class="card">
-    <header class="header">
-        <h1 class="name">Catalina Siminiuc</h1>
-        <div class="meta">
-            <span>Republic of Moldova</span>
-            <span>Date of birth: 15/06/2004</span>
-        </div>
-    </header>
+    <section class="card pad-lg">
+        <header class="header">
+            <h1 class="name">Catalina Siminiuc</h1>
 
-    <section class="contacts">
-        <div class="contact-item">Phone: (+373) 60728369</div>
-        <div class="contact-item">Email: catalina.siminiuc@isa.utm.md</div>
-        <div class="contact-item">
-            Address: 3/10 Studentilor street, Chișinău, Moldova
+            <div class="meta">
+                <span>Chișinău, Moldova</span>
+                <span>Date of birth: 15/06/2004</span>
+
+                <span>
+        Email:
+        <a href="mailto:catalina.siminiuc@isa.utm.md">
+          catalina.siminiuc@isa.utm.md
+        </a>
+      </span>
+
+                <span>
+        GitHub:
+        <a href="https://github.com/catalinacs/tum-web-lab1" target="_blank" rel="noopener">
+          catalinacs/tum-web-lab1
+        </a>
+      </span>
+            </div>
+        </header>
+    </section>
+
+
+    <section>
+        <div class="section-title"><h2>About Me</h2></div>
+        <div class="card pad-md about">
+            <p><strong>Software Engineering student</strong> focused on building clean web applications and well-structured systems.</p>
+            <p>I enjoy team-based projects, clear documentation, and turning requirements into reliable features with a professional UI.</p>
         </div>
     </section>
+
+    <section>
+        <div class="section-title"><h2>Education</h2></div>
+
+        <div class="edu-card">
+            <div class="edu-top">
+                <div>
+                    <h3 class="edu-title">Cisco Networking Academy – IT Essentials</h3>
+                    <div class="edu-sub">Information and Communication Technologies</div>
+                </div>
+                <div class="edu-period">23/06/2022 – 23/11/2022</div>
+            </div>
+
+            <div class="edu-meta">
+                <div class="kv"><span class="k">City:</span><span class="v">Chișinău</span></div>
+                <div class="kv"><span class="k">Country:</span><span class="v">Moldova</span></div>
+                <div class="kv"><span class="k">Website:</span><span class="v"><a href="https://www.netacad.com" target="_blank" rel="noopener">netacad.com</a></span></div>
+
+                <div class="kv"><span class="k">Field:</span><span class="v">Information and Communication Technologies</span></div>
+                <div class="kv"><span class="k">Final grade:</span><span class="v">12</span></div>
+                <div class="kv"><span class="k">Type:</span><span class="v">Professional training</span></div>
+            </div>
+
+            <div class="memory">
+                <div class="label">Pleasant memory</div>
+                <div class="text">Network troubleshooting Packet Tracer labs were fascinating — learning how data flows through networks opened my eyes to infrastructure complexity.</div>
+            </div>
+        </div>
+
+        <div class="space-24"></div>
+
+        <div class="edu-card">
+            <div class="edu-top">
+                <div>
+                    <h3 class="edu-title">Bachelor of Science, English Taught Honours Programme in Software Engineering</h3>
+                    <div class="edu-sub">Technical University of Moldova, Faculty of Computers, Informatics and Microelectronics</div>
+                </div>
+                <div class="edu-period">01/09/2023 – Current</div>
+            </div>
+
+            <div class="edu-meta">
+                <div class="kv"><span class="k">City:</span><span class="v">Chișinău</span></div>
+                <div class="kv"><span class="k">Country:</span><span class="v">Moldova</span></div>
+                <div class="kv"><span class="k">Website:</span><span class="v"><a href="https://utm.md/en/" target="_blank" rel="noopener">utm.md</a></span></div>
+
+                <div class="kv"><span class="k">Field:</span><span class="v">Software Engineering</span></div>
+                <div class="kv"><span class="k">Programme:</span><span class="v">English taught honours</span></div>
+                <div class="kv"><span class="k">Status:</span><span class="v">In progress</span></div>
+            </div>
+
+            <div class="memory">
+                <div class="label">Pleasant memory</div>
+                <div class="text">Working on team projects and presenting results in front of classmates helped me become more confident and more structured in how I communicate technical work.</div>
+            </div>
+        </div>
+
+        <div class="space-24"></div>
+
+        <div class="edu-card">
+            <div class="edu-top">
+                <div>
+                    <h3 class="edu-title">Baccalaureate diploma</h3>
+                    <div class="edu-sub">Public Institution Theoretic Lyceum “Ion Creangă”</div>
+                </div>
+                <div class="edu-period">01/09/2011 – 01/07/2023</div>
+            </div>
+
+            <div class="edu-meta">
+                <div class="kv"><span class="k">City:</span><span class="v">Chișinău</span></div>
+                <div class="kv"><span class="k">Country:</span><span class="v">Moldova</span></div>
+                <div class="kv"><span class="k">Website:</span><span class="v"><a href="https://creanga.md/" target="_blank" rel="noopener">creanga.md</a></span></div>
+
+                <div class="kv"><span class="k">Field of study:</span><span class="v">Real Profile</span></div>
+                <div class="kv"><span class="k">Focus:</span><span class="v">Mathematics and sciences</span></div>
+                <div class="kv"><span class="k">Type:</span><span class="v">Secondary education</span></div>
+            </div>
+
+            <div class="memory">
+                <div class="label">Pleasant memory</div>
+                <div class="text">Math classes trained my discipline and problem-solving mindset; I enjoyed working through difficult exercises until the solution finally became clear.</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div class="section-title"><h2>Projects</h2></div>
+
+        <div class="projects-wrap">
+
+            <div class="project-card">
+                <div class="project-head">
+                    <div>
+                        <h3 class="project-title">Electroteca</h3>
+                        <div class="project-sub">Web platform for borrowing and exchanging electronic and mechatronics equipment</div>
+                    </div>
+                </div>
+
+                <p class="project-desc">
+                    Built as a team project to support structured equipment lending inside academic communities. Focused on clarity, usability, and consistent workflows for listing items, requesting, and tracking borrow status.
+                </p>
+
+                <div class="project-row">
+                    <div class="row-label">Link</div>
+                    <a class="btn" href="https://github.com/georgerabus/electroteca" target="_blank" rel="noopener">GitHub Repository</a>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Tech Stack</div>
+                    <div class="stack">
+                        <span class="pill">PHP</span>
+                        <span class="pill">React</span>
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">HTML</span>
+                        <span class="pill">CSS</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Key Skills</div>
+                    <ul class="skills">
+                        <li>Implemented clear lending workflows and status-driven item tracking.</li>
+                        <li>Contributed to UI structure and consistency across pages and user flows.</li>
+                        <li>Collaborated in a shared repository with coordinated tasks and deliverables.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-head">
+                    <div>
+                        <h3 class="project-title">F.A.C.E.S</h3>
+                        <div class="project-sub">System design, UML modeling, documentation, and UI concepts</div>
+                    </div>
+                </div>
+
+                <p class="project-desc">
+                    Focused on system modeling and structured documentation for a fully automated client engagement solution. Emphasized clarity in diagrams, deliverable structure, and teamwork.
+                </p>
+
+                <div class="project-row">
+                    <div class="row-label">Link</div>
+                    <a class="btn" href="https://github.com/M1XaM/FACES" target="_blank" rel="noopener">GitHub Repository</a>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Tech Stack</div>
+                    <div class="stack">
+                        <span class="pill">HTML</span>
+                        <span class="pill">CSS</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">C#</span>
+                        <span class="pill">Docker</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Key Skills</div>
+                    <ul class="skills">
+                        <li>Created UML diagrams and documentation that clearly communicate system behavior.</li>
+                        <li>Organized deliverables and maintained a consistent presentation format.</li>
+                        <li>Worked in a team environment with shared responsibilities and deadlines.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-head">
+                    <div>
+                        <h3 class="project-title">Project Trophee (PBL)</h3>
+                        <div class="project-sub">Mobile app concept focused on nutrition and healthier habits</div>
+                    </div>
+                </div>
+
+                <p class="project-desc">
+                    Designed a product concept with user-centric flows and a clear value proposition. Focused on requirements, feature planning, and presenting a coherent UX direction.
+                </p>
+
+                <div class="subsection">
+                    <div class="subsection-title">Tech Stack</div>
+                    <div class="stack">
+                        <span class="pill">HTML</span>
+                        <span class="pill">CSS</span>
+                        <span class="pill">Docker</span>
+                        <span class="pill">Typescript</span>
+                        <span class="pill">Rust</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Key Skills</div>
+                    <ul class="skills">
+                        <li>Requirements analysis and user-centered feature planning.</li>
+                        <li>Structured ideation and coordination inside a project-based learning team.</li>
+                        <li>Clear communication of app flows and interaction goals.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title"><h2>Volunteering</h2></div>
+
+        <div class="vol-card">
+            <h3 class="vol-title">Interact Chișinău</h3>
+            <div class="vol-meta">2021 – 2022</div>
+            <p class="vol-desc">
+                Youth NGO focused on leadership development through civic initiatives, inclusion, and community engagement.
+            </p>
+        </div>
+    </section>
+
+    <div class="space-44"></div>
+    <footer>
+        <div>Catalina Siminiuc · 2026</div>
+        <div class="footer-line">
+            Web Programming Lab · Technical University of Moldova
+        </div>
+    </footer>
+
 </main>
-
-<section class="about-section">
-    <div class="about-header">
-        <h2>About Me</h2>
-    </div>
-
-    <div class="about-content">
-        <div class="about-intro">
-            <p>
-                <strong>Software Engineering student</strong> with a strong interest in web technologies and modern software development practices.
-            </p>
-        </div>
-
-        <div class="about-paragraphs">
-            <p>
-                I am currently studying Software Engineering at FAF, where I am building a solid
-                foundation in programming, algorithms, and software design.
-            </p>
-
-            <p>
-                Through academic projects, I have gained experience working both independently
-                and in team environments, following structured development workflows and using
-                version control systems.
-            </p>
-
-            <p>
-                I am motivated, detail-oriented, and eager to continuously improve my technical skills.
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="education-section">
-    <div class="education-header">
-        <h2>Education</h2>
-    </div>
-
-    <div class="education-content">
-        <div class="education-timeline">
-
-            <div class="education-item">
-                <h3 class="education-degree">
-                    Bachelor of Science – English-Taught Honors Programme in Software Engineering (FAF)
-                </h3>
-                <p class="education-school">
-                    Technical University of Moldova, Faculty of Computers, Informatics and Microelectronics
-                </p>
-                <div class="education-meta">
-                    <span><strong>Period:</strong> 01/09/2023 – Present</span>
-                    <span><strong>Location:</strong> Chișinău, Moldova</span>
-                    <span>
-                        <strong>Website:</strong>
-                        <a href="https://utm.md/en/" target="_blank">utm.md</a>
-                    </span>
-                </div>
-            </div>
-
-            <div class="education-item">
-                <h3 class="education-degree">Baccalaureate Diploma</h3>
-                <p class="education-school">
-                    Public Institution Theoretical Lyceum “Ion Creangă”
-                </p>
-                <div class="education-meta">
-                    <span><strong>Field:</strong> Real Profile</span>
-                    <span><strong>Period:</strong> 01/09/2011 – 01/07/2023</span>
-                    <span><strong>Location:</strong> Chișinău, Moldova</span>
-                    <span>
-                        <strong>Website:</strong>
-                        <a href="https://creanga.md/" target="_blank">creanga.md</a>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
 </body>
 </html>
+
