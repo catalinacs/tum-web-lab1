@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Siminiuc Catalina">
     <title>Catalina Siminiuc – CV</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -89,13 +90,15 @@
             gap: 24px;
         }
 
-        .about-header {
+        .about-header,
+        .education-header {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .about-header::before {
+        .about-header::before,
+        .education-header::before {
             content: "";
             width: 5px;
             height: 32px;
@@ -103,17 +106,22 @@
             border-radius: 3px;
         }
 
-        .about-header h2 {
+        .about-header h2,
+        .education-header h2 {
             font-size: 26px;
             margin: 0;
             font-weight: 700;
         }
 
-        .about-content {
+        .about-content,
+        .education-content {
             background: var(--card);
             border-radius: var(--radius);
             padding: 32px;
             box-shadow: var(--shadow);
+        }
+
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1.4fr;
             gap: 24px;
@@ -145,6 +153,65 @@
             margin: 0;
             font-size: 16px;
             line-height: 1.8;
+        }
+
+        /* EDUCATION */
+        .education-section {
+            width: min(960px, 100%);
+            margin-top: 32px;
+            display: grid;
+            gap: 24px;
+        }
+
+        .education-timeline {
+            display: grid;
+            gap: 28px;
+        }
+
+        .education-item {
+            position: relative;
+            padding-left: 26px;
+        }
+
+        .education-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .education-degree {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 6px;
+        }
+
+        .education-school {
+            font-size: 15px;
+            color: var(--muted);
+            margin: 0 0 8px;
+        }
+
+        .education-meta {
+            font-size: 14px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         /* RESPONSIVE */
@@ -196,20 +263,63 @@
         <div class="about-paragraphs">
             <p>
                 I am currently studying Software Engineering at FAF, where I am building a solid
-                foundation in programming, algorithms, and software design. I am particularly interested in how modern web interfaces
-                are designed and implemented.
+                foundation in programming, algorithms, and software design.
             </p>
 
             <p>
                 Through academic projects, I have gained experience working both independently
                 and in team environments, following structured development workflows and using
-                version control systems to manage code effectively.
+                version control systems.
             </p>
 
             <p>
-                I am motivated, detail-oriented, and always eager to learn new technologies,
-                improve my technical skills, and apply theoretical knowledge in practical projects.
+                I am motivated, detail-oriented, and eager to continuously improve my technical skills.
             </p>
+        </div>
+    </div>
+</section>
+
+<section class="education-section">
+    <div class="education-header">
+        <h2>Education</h2>
+    </div>
+
+    <div class="education-content">
+        <div class="education-timeline">
+
+            <div class="education-item">
+                <h3 class="education-degree">
+                    Bachelor of Science – English-Taught Honors Programme in Software Engineering (FAF)
+                </h3>
+                <p class="education-school">
+                    Technical University of Moldova, Faculty of Computers, Informatics and Microelectronics
+                </p>
+                <div class="education-meta">
+                    <span><strong>Period:</strong> 01/09/2023 – Present</span>
+                    <span><strong>Location:</strong> Chișinău, Moldova</span>
+                    <span>
+                        <strong>Website:</strong>
+                        <a href="https://utm.md/en/" target="_blank">utm.md</a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h3 class="education-degree">Baccalaureate Diploma</h3>
+                <p class="education-school">
+                    Public Institution Theoretical Lyceum “Ion Creangă”
+                </p>
+                <div class="education-meta">
+                    <span><strong>Field:</strong> Real Profile</span>
+                    <span><strong>Period:</strong> 01/09/2011 – 01/07/2023</span>
+                    <span><strong>Location:</strong> Chișinău, Moldova</span>
+                    <span>
+                        <strong>Website:</strong>
+                        <a href="https://creanga.md/" target="_blank">creanga.md</a>
+                    </span>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
