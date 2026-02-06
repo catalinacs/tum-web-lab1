@@ -3,10 +3,132 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catalina Siminiuc - CV/Resume</title>
+    <title>Catalina Siminiuc – CV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg: #fff5f8;
+            --card: #ffffff;
+            --text: #2d2d2d;
+            --muted: #6b6b6b;
+            --accent: #f2a1b3;
+            --accent-light: #fde2e8;
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+            --radius: 18px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Poppins", system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 16px;
+            color: var(--text);
+        }
+
+        .card {
+            width: min(900px, 100%);
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            display: grid;
+            gap: 28px;
+            grid-template-columns: 260px 1fr;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .name {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            margin: 0;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .section {
+            border-top: 1px solid var(--accent-light);
+            padding-top: 20px;
+        }
+
+        .section h2 {
+            margin: 0 0 12px;
+            font-size: 20px;
+            color: var(--accent);
+        }
+
+        .info-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .info-item {
+            background: var(--accent-light);
+            padding: 12px 16px;
+            border-radius: 12px;
+        }
+
+        a {
+            color: #c94a6a;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .meta {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<h1>Catalina Siminiuc</h1>
+<main class="card">
+
+    <header class="header">
+        <h1 class="name">Catalina Siminiuc</h1>
+        <div class="meta">
+            <span>Republic of Moldova</span>
+            <span>Date of birth: 15/06/2004</span>
+        </div>
+    </header>
+
+    <section class="section">
+        <h2>Contact information</h2>
+        <div class="info-list">
+            <div class="info-item"> Phone: (+373) 60728369</div>
+            <div class="info-item"> Email: catalina.siminiuc@isa.utm.md</div>
+            <div class="info-item">
+                Address: 3/10 Studentilor street, Chișinău, Moldova
+            </div>
+        </div>
+    </section>
+
+</main>
 </body>
 </html>
